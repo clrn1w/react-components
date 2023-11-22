@@ -1,0 +1,9 @@
+@import "./fonts.scss";
+@import "./variables.scss";
+
+body {
+  color: $text-color;
+  background-color: $background-color;
+  font-family: "Gilroy", sans-serif;
+  overflow: hidden;
+}

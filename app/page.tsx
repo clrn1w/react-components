@@ -1,95 +1,72 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+
+import Image from "next/image";
+
+import ObserverLayout from "@/components/ObserverComponent";
+import ContentLayout from "@/components/ContentLayout";
+import InnerScrollbar from "@/components/InnerScrollbar";
+import Button from "@/components/Button";
+
+import someImg from "@/images/maomao.png";
+
+import styles from "./page.module.scss";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <ContentLayout>
+      <div className={styles.Wrapper}>
+        <div style={{ width: "250px" }}>
+          <h1>Button</h1>
+          <div
+            onClick={() => {
+              alert("hi!");
+            }}
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            <Button text="test" />
+          </div>
+        </div>
+        <div style={{ overflow: "hidden", maxWidth: "800px" }}>
+          <h1>Inner Scrollbar</h1>
+          <InnerScrollbar>
+            <div style={{ height: "200px" }}>
+              <Image src={someImg} alt="img" />
+            </div>
+          </InnerScrollbar>
+        </div>
+        <div>
+          <h1>Observer Component</h1>
+          <ObserverLayout threshold={1}>
+            {(isVisible) => (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  minHeight: "80vh",
+                  backgroundColor: isVisible ? "#ff542e" : "#1a1a19",
+                }}
+              >
+                <h3>{isVisible ? "visible" : "not visible"}</h3>
+              </div>
+            )}
+          </ObserverLayout>
+          <ObserverLayout>
+            {(isVisible) => (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  minHeight: "80vh",
+                  backgroundColor: isVisible ? "#ff542e" : "#1a1a19",
+                }}
+              >
+                <h3>{isVisible ? "visible" : "not visible"}</h3>
+              </div>
+            )}
+          </ObserverLayout>
         </div>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </ContentLayout>
+  );
 }
