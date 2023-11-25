@@ -6,6 +6,7 @@ import ObserverLayout from "@/components/ObserverComponent";
 import ContentLayout from "@/components/ContentLayout";
 import InnerScrollbar from "@/components/InnerScrollbar";
 import Button from "@/components/Button";
+import BubbleText from "@/components/BubbleText";
 
 import someImg from "@/images/maomao.png";
 
@@ -23,6 +24,19 @@ export default function Home() {
             }}
           >
             <Button text="test" />
+          </div>
+        </div>
+        <div>
+          <h1>BubbleText</h1>
+          <div
+            style={{
+              height: "200px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <BubbleText>Lorem ipsum dolor sit amet consectetur.</BubbleText>
           </div>
         </div>
         <div style={{ overflow: "hidden", maxWidth: "800px" }}>

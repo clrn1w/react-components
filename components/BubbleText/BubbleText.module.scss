@@ -1,0 +1,36 @@
+@import "@/styles/variables.scss";
+
+.BubbleText {
+  text-align: center;
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 100;
+  color: $text-color;
+}
+
+.HoverText {
+  transition: 0.35s font-weight, 0.35s color;
+}
+
+.HoverText:hover {
+  font-weight: 900;
+  color: rgb(238, 242, 255);
+}
+
+.HoverText:hover + .HoverText {
+  font-weight: 500;
+  color: rgb(199, 210, 254);
+}
+
+.HoverText:hover + .HoverText + .HoverText {
+  font-weight: 300;
+}
+
+.HoverText:has(+ .HoverText:hover) {
+  font-weight: 500;
+  color: rgb(199, 210, 254);
+}
+
+.HoverText:has(+ .HoverText + .HoverText:hover) {
+  font-weight: 300;
+}
